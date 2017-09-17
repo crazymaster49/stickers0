@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-
-router.get('/', function(req,res){
-  res.json({
-    message: 'we ready'
-  })
-})
+const queries = require('../db/queries.js')
+router.get('/', function(req, res) {
+  queries.getAll().then(function stickers() {
+    res.json(stickers);
+  });
+});
 module.exports = router;
