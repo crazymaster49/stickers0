@@ -6,6 +6,10 @@ module.exports = {
     client: 'pg',
     connection: 'postgres://localhost/stickers'
   },
+  test: {
+    client: 'pg',
+    connection: 'postgres://localhost/test-stickers'
+  }
 
 
 };
