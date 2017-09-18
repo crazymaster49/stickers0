@@ -52,4 +52,36 @@ describe('CRUD Stickers', () => {
         done();
       });
   });
+
+  it('Updates a record', (done) => {
+    fixtures.sticker.Rating = 9;
+    request(app)
+      .put('/api/v1/stickers/1')
+      .send(fixtures.sticker)
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .then((response) => {
+        expect(response.body).to.be.a('object');
+        expect(response.body).to.deep.equal(fixtures.sticker[0]);
+        done();
+      });
+  });
+
+  it('Delete a record', (done) => {
+
+    request(app)
+    .delete('/api/v1/stickers/3')
+    .set('Accept', 'application/json')
+    .expect('Content-Type', /json/)
+      .expect(200)
+      .then((response) => {
+        expect(response.body).to.deep.equal({
+          gone: true
+        });
+        done();
+      });
+  });
+
+
 });
